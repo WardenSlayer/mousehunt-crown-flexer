@@ -1,5 +1,6 @@
 {
   "name": "mousehunt-crown-flexer",
+  "homepage": "https://wardenslayer.github.io/mousehunt-crown-flexer/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,6 +10,7 @@
     "copy-image-clipboard": "^2.1.2",
     "crypto-browserify": "^3.12.0",
     "dotenv": "^16.0.0",
+    "gh-pages": "^3.2.3",
     "google-spreadsheet": "^3.2.0",
     "html2canvas": "^1.4.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
@@ -23,6 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
