@@ -10,7 +10,6 @@
     "copy-image-clipboard": "^2.1.2",
     "crypto-browserify": "^3.12.0",
     "dotenv": "^16.0.0",
-    "gh-pages": "^3.2.3",
     "google-spreadsheet": "^3.2.0",
     "html2canvas": "^1.4.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
