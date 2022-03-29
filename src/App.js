@@ -219,7 +219,7 @@ function CrownText(props) {
       <p className="PlainText">
         {"You earned a " + props.crown + " King's Crown."}
       </p>
-      <p className="PlainText">Congradulations!</p>
+      <p className="PlainText">Congratulations!</p>
     </div>
   );
 }
