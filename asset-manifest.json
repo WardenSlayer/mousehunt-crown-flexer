@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mousehunt-crown-flexer/static/css/main.702eda6f.css",
-    "main.js": "/mousehunt-crown-flexer/static/js/main.b40f3cc9.js",
+    "main.js": "/mousehunt-crown-flexer/static/js/main.68ab7010.js",
     "static/js/787.8f203724.chunk.js": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js",
     "static/media/empyrean_pirate.png": "/mousehunt-crown-flexer/static/media/empyrean_pirate.3833bf977c0be3cb70da.png",
     "static/media/heart_of_the_meteor.png": "/mousehunt-crown-flexer/static/media/heart_of_the_meteor.ff084deee1537b571f38.png",
@@ -1085,11 +1085,11 @@
     "static/media/longtail_mouse.png": "/mousehunt-crown-flexer/static/media/longtail_mouse.5f55197049f473bde1de.png",
     "index.html": "/mousehunt-crown-flexer/index.html",
     "main.702eda6f.css.map": "/mousehunt-crown-flexer/static/css/main.702eda6f.css.map",
-    "main.b40f3cc9.js.map": "/mousehunt-crown-flexer/static/js/main.b40f3cc9.js.map",
+    "main.68ab7010.js.map": "/mousehunt-crown-flexer/static/js/main.68ab7010.js.map",
     "787.8f203724.chunk.js.map": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.702eda6f.css",
-    "static/js/main.b40f3cc9.js"
+    "static/js/main.68ab7010.js"
   ]
 }
