@@ -193,7 +193,7 @@ function disclaimerText() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MAIN
 function MainPanel(props) {
-  if (props.className == "Main") {
+  if (props.className === "Main") {
     return (
       <div className={props.className}>
         <ImageCanvas
@@ -247,11 +247,11 @@ function MousePanel(props) {
 
 function mouseImageClass(landscape, type) {
   let style = "";
-  if (landscape && type == "B") {
+  if (landscape && type === "B") {
     style = "MouseImageLand";
-  } else if (landscape && type == "M") {
+  } else if (landscape && type === "M") {
     style = "MobileMouseImageLand";
-  } else if (type == "B") {
+  } else if (type === "B") {
     style = "MouseImagePort";
   } else {
     style = "MobileMouseImagePort";
