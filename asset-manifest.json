@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mousehunt-crown-flexer/static/css/main.702eda6f.css",
-    "main.js": "/mousehunt-crown-flexer/static/js/main.68ab7010.js",
+    "main.css": "/mousehunt-crown-flexer/static/css/main.e40aa04d.css",
+    "main.js": "/mousehunt-crown-flexer/static/js/main.95c1bcc1.js",
     "static/js/787.8f203724.chunk.js": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js",
     "static/media/empyrean_pirate.png": "/mousehunt-crown-flexer/static/media/empyrean_pirate.3833bf977c0be3cb70da.png",
     "static/media/heart_of_the_meteor.png": "/mousehunt-crown-flexer/static/media/heart_of_the_meteor.ff084deee1537b571f38.png",
@@ -116,6 +116,7 @@
     "static/media/rift_gaunt_melee_champ.png": "/mousehunt-crown-flexer/static/media/rift_gaunt_melee_champ.67644f024919b0236322.png",
     "static/media/hired_eidolon.png": "/mousehunt-crown-flexer/static/media/hired_eidolon.340a907fba9c32e6ec6b.png",
     "static/media/rift_gaunt_dust_champ.png": "/mousehunt-crown-flexer/static/media/rift_gaunt_dust_champ.c52b227af513999642e7.png",
+    "static/media/leather_texture_320.png": "/mousehunt-crown-flexer/static/media/leather_texture_320.9d52c80224f1611e0f1a.png",
     "static/media/costumed_dragon.png": "/mousehunt-crown-flexer/static/media/costumed_dragon.112a6061e872ca2b1614.png",
     "static/media/rift_itty_bitty_burroughs.png": "/mousehunt-crown-flexer/static/media/rift_itty_bitty_burroughs.2f1e2831ee0ca74e074f.png",
     "static/media/rift_radioactive_gold.png": "/mousehunt-crown-flexer/static/media/rift_radioactive_gold.de9ff7ee648b85f0b935.png",
@@ -807,7 +808,9 @@
     "static/media/snooty.png": "/mousehunt-crown-flexer/static/media/snooty.132d5fbed3efdcc4fe72.png",
     "static/media/pintail.png": "/mousehunt-crown-flexer/static/media/pintail.35f57404cf73d30bb97e.png",
     "static/media/wreath_thief.png": "/mousehunt-crown-flexer/static/media/wreath_thief.7d80cecc4894384c388f.png",
+    "static/media/toaster_crown_diamond_640.png": "/mousehunt-crown-flexer/static/media/toaster_crown_diamond_640.5e125f3160033e93698b.png",
     "static/media/cursed_thief.png": "/mousehunt-crown-flexer/static/media/cursed_thief.9fa4df56268c2674a2f9.png",
+    "static/media/toaster_crown_platinum_640.png": "/mousehunt-crown-flexer/static/media/toaster_crown_platinum_640.5a109e4c4bd98f4e97b6.png",
     "static/media/treant.png": "/mousehunt-crown-flexer/static/media/treant.abd4dad9595600c07374.png",
     "static/media/magmatic_crystal_thief.png": "/mousehunt-crown-flexer/static/media/magmatic_crystal_thief.197a0db24da5ac44c611.png",
     "static/media/gelatinous_octahedron.png": "/mousehunt-crown-flexer/static/media/gelatinous_octahedron.ff518fb7346c552aad81.png",
@@ -817,6 +820,7 @@
     "static/media/quillback.png": "/mousehunt-crown-flexer/static/media/quillback.eb42d41ff620539b2d53.png",
     "static/media/fromager_mouse.png": "/mousehunt-crown-flexer/static/media/fromager_mouse.0c4b29c72444828308b7.png",
     "static/media/kite_flyer.png": "/mousehunt-crown-flexer/static/media/kite_flyer.66eafc468447a976c60b.png",
+    "static/media/toaster_crown_gold_640.png": "/mousehunt-crown-flexer/static/media/toaster_crown_gold_640.763c13876e74be889122.png",
     "static/media/dance_boss.png": "/mousehunt-crown-flexer/static/media/dance_boss.21f9d80e22593409e402.png",
     "static/media/tiny_saboteur.png": "/mousehunt-crown-flexer/static/media/tiny_saboteur.001142b836758a2bf015.png",
     "static/media/hurdle.png": "/mousehunt-crown-flexer/static/media/hurdle.950f4c1564f12c9548af.png",
@@ -825,10 +829,13 @@
     "static/media/friend_zone.png": "/mousehunt-crown-flexer/static/media/friend_zone.5a21c92a716f88412d6b.png",
     "static/media/abominable_snow.png": "/mousehunt-crown-flexer/static/media/abominable_snow.2aae869755e30be48121.png",
     "static/media/buckethead.png": "/mousehunt-crown-flexer/static/media/buckethead.6a9363b857bd73cf9796.png",
+    "static/media/toaster_crown_silver_640.png": "/mousehunt-crown-flexer/static/media/toaster_crown_silver_640.32b5fd371536b8487daa.png",
+    "static/media/toaster_crown_bronze_640.png": "/mousehunt-crown-flexer/static/media/toaster_crown_bronze_640.8012c934348d7a287749.png",
     "static/media/sleepwalker.png": "/mousehunt-crown-flexer/static/media/sleepwalker.ed7f864203d715e7b4cd.png",
     "static/media/stingray.png": "/mousehunt-crown-flexer/static/media/stingray.6d6de047eec1c25a0989.png",
     "static/media/passenger.png": "/mousehunt-crown-flexer/static/media/passenger.cc054b2c0cfbe6a196e5.png",
     "static/media/dunehopper.png": "/mousehunt-crown-flexer/static/media/dunehopper.58b178aa7e651cd6bdf1.png",
+    "static/media/Baskerville-Semibold.ttf": "/mousehunt-crown-flexer/static/media/Baskerville-Semibold.8f2975b233209f54768c.ttf",
     "static/media/burglar.png": "/mousehunt-crown-flexer/static/media/burglar.8f3b772d22510bd37fa8.png",
     "static/media/gordborg.png": "/mousehunt-crown-flexer/static/media/gordborg.27456e24b768a7dbd387.png",
     "static/media/lich.png": "/mousehunt-crown-flexer/static/media/lich.2d273ce061d99facfb48.png",
@@ -1084,12 +1091,12 @@
     "static/media/mystic_pawn.png": "/mousehunt-crown-flexer/static/media/mystic_pawn.2d588ce7c1e26b602f6a.png",
     "static/media/longtail_mouse.png": "/mousehunt-crown-flexer/static/media/longtail_mouse.5f55197049f473bde1de.png",
     "index.html": "/mousehunt-crown-flexer/index.html",
-    "main.702eda6f.css.map": "/mousehunt-crown-flexer/static/css/main.702eda6f.css.map",
-    "main.68ab7010.js.map": "/mousehunt-crown-flexer/static/js/main.68ab7010.js.map",
+    "main.e40aa04d.css.map": "/mousehunt-crown-flexer/static/css/main.e40aa04d.css.map",
+    "main.95c1bcc1.js.map": "/mousehunt-crown-flexer/static/js/main.95c1bcc1.js.map",
     "787.8f203724.chunk.js.map": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.702eda6f.css",
-    "static/js/main.68ab7010.js"
+    "static/css/main.e40aa04d.css",
+    "static/js/main.95c1bcc1.js"
   ]
 }
