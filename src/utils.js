@@ -10,8 +10,17 @@ export function domToPng() {
     }
     document.querySelector(".Main").appendChild(canvas);
   });
+  html2canvas(document.querySelector(".gameView")).then((canvas) => {
+    canvas.id = "mobileImg";
+    const previous = document.getElementById("mobileImg");
+    if (previous) {
+      previous.remove();
+    }
+    document.querySelector(".Mobile").appendChild(canvas);
+  });
 }
 
+//<div className="gameView">
 export function download() {
   const hasCanvas = document.getElementById("webImg");
   if (hasCanvas) {
@@ -5982,39 +5991,15 @@ export const miceData = [
     landscape: false,
   },
   {
-    type: "rift_gaunt_generic_three",
-    name: "Lumi-lancer Mouse",
-    img: "rift_gaunt_generic_three.png",
-    landscape: false,
-  },
-  {
     type: "rift_gaunt_generic_two",
     name: "Berzerker Mouse",
     img: "rift_gaunt_generic_two.png",
     landscape: false,
   },
   {
-    type: "rift_gaunt_magic",
-    name: "Mouse of Elements",
-    img: "rift_gaunt_magic.png",
-    landscape: false,
-  },
-  {
-    type: "rift_gaunt_magic_champ",
-    name: "Magic Champion Mouse",
-    img: "rift_gaunt_magic_champ.png",
-    landscape: false,
-  },
-  {
     type: "rift_gaunt_generic_three",
     name: "Lumi-lancer Mouse",
     img: "rift_gaunt_generic_three.png",
-    landscape: false,
-  },
-  {
-    type: "rift_gaunt_generic_two",
-    name: "Berzerker Mouse",
-    img: "rift_gaunt_generic_two.png",
     landscape: false,
   },
   {

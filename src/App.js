@@ -1,10 +1,18 @@
 import "./App.css";
 import { mapMiceData, miceData, domToPng, download } from "./utils.js";
+//
 import bronzeCrown from "./images/crown_images/crown_bronze.png";
 import silverCrown from "./images/crown_images/crown_silver.png";
 import goldCrown from "./images/crown_images/crown_gold.png";
 import platinumCrown from "./images/crown_images/crown_platinum.png";
 import diamondCrown from "./images/crown_images/crown_diamond.png";
+//
+import bronzeCrownToast from "./images/crown_images/toaster_crown_bronze_640.png";
+import silverCrownToast from "./images/crown_images/toaster_crown_silver_640.png";
+import goldCrownToast from "./images/crown_images/toaster_crown_gold_640.png";
+import platinumCrownToast from "./images/crown_images/toaster_crown_platinum_640.png";
+import diamondCrownToast from "./images/crown_images/toaster_crown_diamond_640.png";
+//
 import Select from "react-dropdown-select";
 import { Text, Linking } from "react-native";
 import React, { useState } from "react";
@@ -26,6 +34,13 @@ function App() {
       />
       <MainPanel
         className="Main"
+        mouse={state[0]}
+        img={state[1]}
+        landscape={state[2]}
+        crown={state[3]}
+      />
+      <MainPanel
+        className="Mobile"
         mouse={state[0]}
         img={state[1]}
         landscape={state[2]}
@@ -143,19 +158,64 @@ function SearchOnChange(type, values, update, mouse, img, landscape, crown) {
   }, 250);
 }
 
+function ButtonPanel(props) {
+  return (
+    <div className="ButtonPanel">
+      <PrimaryButton label="Download" onClick={(e) => download()} />
+    </div>
+  );
+}
+
+function PrimaryButton(props) {
+  return (
+    <div className="PrimaryButton TitleText TextCenter" onClick={props.onClick}>
+      {props.label}
+    </div>
+  );
+}
+
+function Disclaimer(props) {
+  return (
+    <div className="Disclaimer TitleText">
+      <Text onPress={() => Linking.openURL(props.url)}>{disclaimerText()}</Text>
+    </div>
+  );
+}
+
+function disclaimerText() {
+  const text1 = "All of the images used in this application are copyright ";
+  const text2 =
+    "They are really awesome and you should check them out. (Click Here)";
+  const hg = "Hitgrab, the developers of MouseHunt. ";
+  return text1 + hg + text2;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MAIN
 function MainPanel(props) {
-  return (
-    <div className={props.className}>
-      <ImageCanvas
-        mouse={props.mouse}
-        img={props.img}
-        landscape={props.landscape}
-        crown={props.crown}
-      />
-    </div>
-  );
+  if (props.className === "Main") {
+    return (
+      <div className={props.className}>
+        <ImageCanvas
+          mouse={props.mouse}
+          img={props.img}
+          landscape={props.landscape}
+          crown={props.crown}
+        />
+      </div>
+    );
+  } else {
+    return (
+      <div className={props.className}>
+        <MobileImageCanvas
+          mouse={props.mouse}
+          img={props.img}
+          landscape={props.landscape}
+          crown={props.crown}
+        />
+      </div>
+    );
+  }
 }
 
 function ImageCanvas(props) {
@@ -177,7 +237,7 @@ function MousePanel(props) {
       <div className="HeaderSpacer"></div>
       <img
         src={require("./images/mouse_images/" + props.img)}
-        className={mouseImageClass(props.landscape)}
+        className={mouseImageClass(props.landscape, "B")}
         alt="Some Awesome Mouse"
       ></img>
       <MouseName mouse={props.mouse} />
@@ -185,12 +245,18 @@ function MousePanel(props) {
   );
 }
 
-function mouseImageClass(landscape) {
-  if (landscape) {
-    return "MouseImageLand";
+function mouseImageClass(landscape, type) {
+  let style = "";
+  if (landscape && type === "B") {
+    style = "MouseImageLand";
+  } else if (landscape && type === "M") {
+    style = "MobileMouseImageLand";
+  } else if (type === "B") {
+    style = "MouseImagePort";
   } else {
-    return "MouseImagePort";
+    style = "MobileMouseImagePort";
   }
+  return style;
 }
 
 function MouseName(props) {
@@ -228,59 +294,107 @@ function mapCrown(mouse, crown_tag) {
   let num = "";
   let img = "";
   let crn = "";
+  let toast = "";
   if (crown_tag === "bronze") {
     num = "10th";
     img = bronzeCrown;
     crn = "Bronze";
+    toast = bronzeCrownToast;
   } else if (crown_tag === "silver") {
     num = "100th";
     img = silverCrown;
     crn = "Silver";
+    toast = silverCrownToast;
   } else if (crown_tag === "gold") {
     num = "500th";
     img = goldCrown;
     crn = "Gold";
+    toast = goldCrownToast;
   } else if (crown_tag === "platinum") {
     num = "1000th";
     img = platinumCrown;
     crn = "Platinum";
+    toast = platinumCrownToast;
   } else if (crown_tag === "diamond") {
     num = "2500th";
     img = diamondCrown;
     crn = "Diamond";
+    toast = diamondCrownToast;
   }
   const crownText = "You caught your " + num + " " + mouse + ".";
-  return [img, crownText, crn];
+  return [img, crownText, crn, toast];
 }
 
-function ButtonPanel(props) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//MOBILE
+function MobileImageCanvas(props) {
   return (
-    <div className="ButtonPanel">
-      <PrimaryButton label="Download" onClick={(e) => download()} />
+    <div className="gameView">
+      <HuntResult
+        mouse={props.mouse}
+        img={props.img}
+        landscape={props.landscape}
+        crown={props.crown}
+      />
+      <ToastPanel
+        mouse={props.mouse}
+        img={props.img}
+        landscape={props.landscape}
+        crown={props.crown}
+      />
     </div>
   );
 }
 
-function PrimaryButton(props) {
+function HuntResult(props) {
   return (
-    <div className="PrimaryButton TitleText TextCenter" onClick={props.onClick}>
-      {props.label}
+    <div className="HuntResultMobile">
+      <HuntResultText mouse={props.mouse} />
+      <div className="ResultFlair">
+        <img
+          src={require("./images/misc_images/msg_tray_regal_640.png")}
+          alt="Flair"
+          width="60%"
+        ></img>
+      </div>
+      <MobileMousePanel
+        mouse={props.mouse}
+        img={props.img}
+        landscape={props.landscape}
+      />
     </div>
   );
 }
 
-function Disclaimer(props) {
+function HuntResultText(props) {
   return (
-    <div className="Disclaimer TitleText">
-      <Text onPress={() => Linking.openURL(props.url)}>{disclaimerText()}</Text>
+    <div className="HuntResultText">
+      <p className="MobileTextA">Congrats! You Caught a</p>
+      <p className="MobileTextB">{props.mouse}</p>
     </div>
   );
 }
 
-function disclaimerText() {
-  const text1 = "All of the images used in this application are copyright ";
-  const text2 =
-    "They are really awesome and you should check them out. (Click Here)";
-  const hg = "Hitgrab, the developers of MouseHunt. ";
-  return text1 + hg + text2;
+function MobileMousePanel(props) {
+  return (
+    <div className="MobileMousePanel">
+      <img
+        src={require("./images/mouse_images/" + props.img)}
+        className={mouseImageClass(props.landscape, "M")}
+        alt="Some Awesome Mouse"
+      ></img>
+    </div>
+  );
+}
+
+function ToastPanel(props) {
+  return (
+    <div className="ToastPanel">
+      <img
+        className="Toaster"
+        src={mapCrown(props.mouse, props.crown)[3]}
+        alt="Some Awesome Crown"
+      ></img>
+    </div>
+  );
 }
