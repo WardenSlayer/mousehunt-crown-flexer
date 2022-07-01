@@ -1,46 +1,41 @@
 .App {
   text-align: center;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: row;
-}
-
-.App-header {
-  background-color: #e6e6e6;
-  display: flex;
-  flex-direction: column;
-  align-items: normal;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  width: 100%;
-}
-
-.App-link {
-  color: #61dafb;
+  background-image: url("./images/misc_images/blueprint_bg.jpg");
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-position: 32% 0%;
+  background-size: 60%;
 }
 
 .Menu {
-  color: var(--bs-gray-dark);
-  background-color: rgb(68, 116, 219);
-  border-style: solid;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #15459e;
+  font-weight: 500;
+  text-decoration: none solid rgb(68, 68, 68);
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(37, 145, 251, 0.98) 0.1%,
+    rgba(0, 7, 128, 1) 99.8%
+  );
+  border-style: ridge;
   border-width: 3px;
-  border-color: rgb(27, 27, 27);
+  border-color: rgb(218, 218, 218);
   width: 25%;
   height: 100%;
   padding: 3px;
 }
 
 .Main {
+  align-items: center;
   display: flex;
   flex-direction: column;
   color: var(--bs-gray-dark);
-  background-color: rgb(194, 194, 194);
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(27, 27, 27);
-  width: 37%;
+  width: 38%;
   height: 100%;
   padding: 3px;
   padding-top: 50px;
@@ -48,13 +43,10 @@
 }
 
 .Mobile {
+  align-items: center;
   display: flex;
   flex-direction: column;
   color: var(--bs-gray-dark);
-  background-color: rgb(194, 194, 194);
-  border-style: solid;
-  border-width: 3px;
-  border-color: rgb(27, 27, 27);
   width: 37%;
   height: 100%;
   padding: 3px;
@@ -62,8 +54,16 @@
   padding-left: 50px;
 }
 
+.ApplicationTitle {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #ffdc15;
+  font-weight: 500;
+  text-decoration: none solid rgb(68, 68, 68);
+  padding-top: 5px;
+}
+
 .Search {
-  color: var(--bs-gray-dark);
   background-color: rgb(241, 241, 241);
   margin-bottom: 5px;
 }
@@ -109,7 +109,6 @@
 }
 
 .TextPanel {
-  color: var(--bs-gray-dark);
   background-color: rgb(253, 250, 250);
   width: 60%;
   height: 100%;
@@ -160,10 +159,15 @@
 .PrimaryButton {
   cursor: pointer;
   color: var(--bs-gray-dark);
-  background-color: rgb(253, 250, 250);
-  border-color: rgb(27, 27, 27);
-  border-style: solid;
-  border-width: 3px;
+  background-image: linear-gradient(
+    to right,
+    #ff8008 0%,
+    #ffc837 51%,
+    #ff8008 100%
+  );
+  border-color: rgb(255, 215, 130);
+  border-style: outset;
+  border-width: 2px;
   border-radius: 8px;
   width: 90px;
   height: 35px;
@@ -172,6 +176,11 @@
 }
 
 .Disclaimer {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: #ffdc15;
+  font-weight: 500;
+  text-decoration: none solid rgb(68, 68, 68);
   margin-top: 450px;
   padding-top: 5px;
   width: 385px;
@@ -183,16 +192,14 @@
   margin-bottom: 75px;
   align-items: center;
   display: flex;
+  background-image: url("./images/misc_images/leather_texture_320.png");
   flex-direction: column;
-  border-style: solid;
-  border-width: 1px;
+  border-style: ridge;
+  border-width: 2px;
   border-radius: 2px;
   width: 325px;
   height: 500px;
   padding: 2px;
-  background-color: #8c765b;
-  background: url("./images/misc_images/leather_shadow_320.png") repeat-x bottom,
-    url("./images/misc_images/leather_texture_320.png");
 }
 
 .HuntResultMobile {

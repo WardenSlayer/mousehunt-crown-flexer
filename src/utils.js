@@ -20,22 +20,60 @@ export function domToPng() {
   });
 }
 
-//<div className="gameView">
 export function download() {
-  const hasCanvas = document.getElementById("webImg");
-  if (hasCanvas) {
-    const crowntext = document
+  const webCanvas = document.getElementById("webImg");
+  const mobileCanvas = document.getElementById("mobileImg");
+  let canvas = "";
+  let fileName = "";
+  const crowntext = document;
+  if (webCanvas) {
+    fileName = document
       .querySelector(
         "#root > div > div.Main > div > div.TextPanel > div > p.TitleText.TextLeft"
       )
       .innerHTML.replace("You caught your ", "")
       .replace(".", "");
-    const canvas = document.getElementById("webImg");
+    canvas = webCanvas;
     const url = canvas.toDataURL("image/png");
     const link = document.createElement("a");
-    link.download = crowntext + ".png";
+    link.download = fileName + ".png";
     link.href = url;
     link.click();
+  } else {
+  }
+  //
+  if (mobileCanvas) {
+    const crown = document
+      .querySelector("#root > div > div.Mobile > div > div.ToastPanel > img")
+      .src.split("toaster_crown_")[1]
+      .split("_")[0];
+    let count = "";
+    if (crown === "bronze") {
+      count = "10th ";
+    } else if (crown === "silver") {
+      count = "100th ";
+    } else if (crown === "gold") {
+      count = "500th ";
+    } else if (crown === "platinum") {
+      count = "1000th ";
+    } else if (crown === "diamond") {
+      count = "2500th ";
+    } else {
+      count = "First ";
+    }
+    fileName =
+      count +
+      document.querySelector(
+        "#root > div > div.Mobile > div > div.HuntResultMobile > div.HuntResultText > p.MobileTextB"
+      ).innerHTML +
+      " -Mobile";
+    canvas = mobileCanvas;
+    const url = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.download = fileName + ".png";
+    link.href = url;
+    link.click();
+  } else {
   }
 }
 
@@ -47,6 +85,25 @@ export function mapMiceData(mouse) {
     }
   });
   return mouseObj;
+}
+
+export function logUse() {
+  const today = new Date().toLocaleString("en-US", { timeZone: "UTC" });
+  const request = new XMLHttpRequest();
+  request.open(
+    "POST",
+    "https://discord.com/api/webhooks/991371919909720124/sYHqAcKtrl9uVOGjwuEn2jbbAVbLzzEunwVZTDQmStBX5OeD3wBZYnMDzIVWHdHc7kye"
+  );
+  //
+  request.setRequestHeader("Content-type", "application/json");
+  //
+  const params = {
+    username: "Crown Flexer Visits",
+    avatar_url: "",
+    content: "New MH Crown Flexer page visit on " + today + " UTC",
+  };
+  //
+  request.send(JSON.stringify(params));
 }
 
 export const miceData = [
