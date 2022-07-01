@@ -1,5 +1,5 @@
 import "./App.css";
-import { mapMiceData, miceData, domToPng, download } from "./utils.js";
+import { mapMiceData, miceData, domToPng, download, logUse } from "./utils.js";
 //
 import bronzeCrown from "./images/crown_images/crown_bronze.png";
 import silverCrown from "./images/crown_images/crown_silver.png";
@@ -15,9 +15,13 @@ import diamondCrownToast from "./images/crown_images/toaster_crown_diamond_640.p
 //
 import Select from "react-dropdown-select";
 import { Text, Linking } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 function App() {
+  useEffect(() => {
+    logUse();
+    localStorage.setItem("mh.cf.imgDrawn", "");
+  }, []);
   let defaultState = appDefaultState(miceData);
   const [state, updateState] = useState(defaultState);
   return (
@@ -65,7 +69,7 @@ function appDefaultState(miceData) {
 function Menu(props) {
   return (
     <div className={props.className}>
-      <h2>Menu</h2>
+      <h2 className="ApplicationTitle">MouseHunt Crown Flexer</h2>
       <Search
         className="Search"
         placeholder="Select Mouse"
@@ -153,15 +157,25 @@ function SearchOnChange(type, values, update, mouse, img, landscape, crown) {
   }
   //console.log([mouse, img, landscape, crown]);
   update([mouse, img, landscape, crown]);
+  localStorage.setItem("mh.cf.imgDrawn", "Y");
   setTimeout(() => {
     domToPng();
   }, 250);
 }
 
+function showButtons() {
+  const imgDrawn = localStorage.getItem("mh.cf.imgDrawn");
+  if (imgDrawn == "Y") {
+    return <PrimaryButton label="Download" onClick={(e) => download()} />;
+  } else {
+    return false;
+  }
+}
+
 function ButtonPanel(props) {
   return (
     <div className="ButtonPanel">
-      <PrimaryButton label="Download" onClick={(e) => download()} />
+      <div>{showButtons()}</div>
     </div>
   );
 }
@@ -176,16 +190,18 @@ function PrimaryButton(props) {
 
 function Disclaimer(props) {
   return (
-    <div className="Disclaimer TitleText">
-      <Text onPress={() => Linking.openURL(props.url)}>{disclaimerText()}</Text>
+    <div className="Disclaimer">
+      {disclaimerText()}
+      <a href="http://hitgrab.com/games/" target="_blank">
+        Here!
+      </a>
     </div>
   );
 }
 
 function disclaimerText() {
   const text1 = "All of the images used in this application are copyright ";
-  const text2 =
-    "They are really awesome and you should check them out. (Click Here)";
+  const text2 = "They are really awesome and you should check them out ";
   const hg = "Hitgrab, the developers of MouseHunt. ";
   return text1 + hg + text2;
 }
