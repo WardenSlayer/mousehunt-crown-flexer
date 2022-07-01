@@ -25,7 +25,6 @@ export function download() {
   const mobileCanvas = document.getElementById("mobileImg");
   let canvas = "";
   let fileName = "";
-  const crowntext = document;
   if (webCanvas) {
     fileName = document
       .querySelector(

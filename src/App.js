@@ -14,7 +14,6 @@ import platinumCrownToast from "./images/crown_images/toaster_crown_platinum_640
 import diamondCrownToast from "./images/crown_images/toaster_crown_diamond_640.png";
 //
 import Select from "react-dropdown-select";
-import { Text, Linking } from "react-native";
 import React, { useState, useEffect } from "react";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 function App() {
@@ -165,7 +164,7 @@ function SearchOnChange(type, values, update, mouse, img, landscape, crown) {
 
 function showButtons() {
   const imgDrawn = localStorage.getItem("mh.cf.imgDrawn");
-  if (imgDrawn == "Y") {
+  if (imgDrawn === "Y") {
     return <PrimaryButton label="Download" onClick={(e) => download()} />;
   } else {
     return false;
@@ -192,7 +191,7 @@ function Disclaimer(props) {
   return (
     <div className="Disclaimer">
       {disclaimerText()}
-      <a href="http://hitgrab.com/games/" target="_blank">
+      <a href="http://hitgrab.com/games/" target="_blank" rel="noreferrer">
         Here!
       </a>
     </div>
