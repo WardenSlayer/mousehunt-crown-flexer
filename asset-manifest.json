@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/mousehunt-crown-flexer/static/css/main.e40aa04d.css",
-    "main.js": "/mousehunt-crown-flexer/static/js/main.95c1bcc1.js",
-    "static/js/787.8f203724.chunk.js": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js",
+    "main.css": "/mousehunt-crown-flexer/static/css/main.22e8c9b8.css",
+    "main.js": "/mousehunt-crown-flexer/static/js/main.bbb6dbba.js",
     "static/media/empyrean_pirate.png": "/mousehunt-crown-flexer/static/media/empyrean_pirate.3833bf977c0be3cb70da.png",
     "static/media/heart_of_the_meteor.png": "/mousehunt-crown-flexer/static/media/heart_of_the_meteor.ff084deee1537b571f38.png",
     "static/media/rift_menace.png": "/mousehunt-crown-flexer/static/media/rift_menace.3712942d2c8b86fd22de.png",
@@ -869,6 +868,7 @@
     "static/media/fiend.png": "/mousehunt-crown-flexer/static/media/fiend.87f98a3d4f1f2f2bee11.png",
     "static/media/desert_archer_epic.png": "/mousehunt-crown-flexer/static/media/desert_archer_epic.6d79509bada298c893a2.png",
     "static/media/keeper.png": "/mousehunt-crown-flexer/static/media/keeper.faae5d070b4afd4d2c87.png",
+    "static/media/blueprint_bg.jpg": "/mousehunt-crown-flexer/static/media/blueprint_bg.71779c674f5e0b6fd976.jpg",
     "static/media/berserker.png": "/mousehunt-crown-flexer/static/media/berserker.a475c6a68e9cb5c075a8.png",
     "static/media/protector.png": "/mousehunt-crown-flexer/static/media/protector.351120d397438e141568.png",
     "static/media/nutcracker.png": "/mousehunt-crown-flexer/static/media/nutcracker.8654b9334bf5aa8b2175.png",
@@ -1091,12 +1091,11 @@
     "static/media/mystic_pawn.png": "/mousehunt-crown-flexer/static/media/mystic_pawn.2d588ce7c1e26b602f6a.png",
     "static/media/longtail_mouse.png": "/mousehunt-crown-flexer/static/media/longtail_mouse.5f55197049f473bde1de.png",
     "index.html": "/mousehunt-crown-flexer/index.html",
-    "main.e40aa04d.css.map": "/mousehunt-crown-flexer/static/css/main.e40aa04d.css.map",
-    "main.95c1bcc1.js.map": "/mousehunt-crown-flexer/static/js/main.95c1bcc1.js.map",
-    "787.8f203724.chunk.js.map": "/mousehunt-crown-flexer/static/js/787.8f203724.chunk.js.map"
+    "main.22e8c9b8.css.map": "/mousehunt-crown-flexer/static/css/main.22e8c9b8.css.map",
+    "main.bbb6dbba.js.map": "/mousehunt-crown-flexer/static/js/main.bbb6dbba.js.map"
   },
   "entrypoints": [
-    "static/css/main.e40aa04d.css",
-    "static/js/main.95c1bcc1.js"
+    "static/css/main.22e8c9b8.css",
+    "static/js/main.bbb6dbba.js"
   ]
 }
