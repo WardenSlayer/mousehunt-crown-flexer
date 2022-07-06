@@ -75,7 +75,12 @@ export function download() {
   } else {
   }
 }
-
+export function repoGo() {
+  window.open(
+    "https://github.com/WardenSlayer/mousehunt-crown-flexer",
+    "_blank"
+  );
+}
 export function mapMiceData(mouse) {
   let mouseObj = {};
   miceData.forEach(function (arrayItem, index) {
@@ -84,25 +89,6 @@ export function mapMiceData(mouse) {
     }
   });
   return mouseObj;
-}
-
-export function logUse() {
-  const today = new Date().toLocaleString("en-US", { timeZone: "UTC" });
-  const request = new XMLHttpRequest();
-  request.open(
-    "POST",
-    "https://discord.com/api/webhooks/991371919909720124/sYHqAcKtrl9uVOGjwuEn2jbbAVbLzzEunwVZTDQmStBX5OeD3wBZYnMDzIVWHdHc7kye"
-  );
-  //
-  request.setRequestHeader("Content-type", "application/json");
-  //
-  const params = {
-    username: "Crown Flexer Visits",
-    avatar_url: "",
-    content: "New MH Crown Flexer page visit on " + today + " UTC",
-  };
-  //
-  request.send(JSON.stringify(params));
 }
 
 export const miceData = [
