@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mousehunt-crown-flexer/static/css/main.22e8c9b8.css",
-    "main.js": "/mousehunt-crown-flexer/static/js/main.bbb6dbba.js",
+    "main.css": "/mousehunt-crown-flexer/static/css/main.f2854914.css",
+    "main.js": "/mousehunt-crown-flexer/static/js/main.f6edc85c.js",
     "static/media/empyrean_pirate.png": "/mousehunt-crown-flexer/static/media/empyrean_pirate.3833bf977c0be3cb70da.png",
     "static/media/heart_of_the_meteor.png": "/mousehunt-crown-flexer/static/media/heart_of_the_meteor.ff084deee1537b571f38.png",
     "static/media/rift_menace.png": "/mousehunt-crown-flexer/static/media/rift_menace.3712942d2c8b86fd22de.png",
@@ -1091,11 +1091,11 @@
     "static/media/mystic_pawn.png": "/mousehunt-crown-flexer/static/media/mystic_pawn.2d588ce7c1e26b602f6a.png",
     "static/media/longtail_mouse.png": "/mousehunt-crown-flexer/static/media/longtail_mouse.5f55197049f473bde1de.png",
     "index.html": "/mousehunt-crown-flexer/index.html",
-    "main.22e8c9b8.css.map": "/mousehunt-crown-flexer/static/css/main.22e8c9b8.css.map",
-    "main.bbb6dbba.js.map": "/mousehunt-crown-flexer/static/js/main.bbb6dbba.js.map"
+    "main.f2854914.css.map": "/mousehunt-crown-flexer/static/css/main.f2854914.css.map",
+    "main.f6edc85c.js.map": "/mousehunt-crown-flexer/static/js/main.f6edc85c.js.map"
   },
   "entrypoints": [
-    "static/css/main.22e8c9b8.css",
-    "static/js/main.bbb6dbba.js"
+    "static/css/main.f2854914.css",
+    "static/js/main.f6edc85c.js"
   ]
 }
