@@ -1,5 +1,5 @@
 import "./App.css";
-import { mapMiceData, miceData, domToPng, download, logUse } from "./utils.js";
+import { mapMiceData, miceData, domToPng, download, repoGo } from "./utils.js";
 //
 import bronzeCrown from "./images/crown_images/crown_bronze.png";
 import silverCrown from "./images/crown_images/crown_silver.png";
@@ -18,7 +18,6 @@ import React, { useState, useEffect } from "react";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 function App() {
   useEffect(() => {
-    logUse();
     localStorage.setItem("mh.cf.imgDrawn", "");
   }, []);
   let defaultState = appDefaultState(miceData);
@@ -162,26 +161,37 @@ function SearchOnChange(type, values, update, mouse, img, landscape, crown) {
   }, 250);
 }
 
+function ButtonPanel(props) {
+  return (
+    <div className="ButtonPanel">
+      <PrimaryButton
+        className={"PrimaryButton TitleText TextCenter ButtonMargin"}
+        label="Github"
+        onClick={(e) => repoGo()}
+      />
+      {showButtons()}
+    </div>
+  );
+}
+
 function showButtons() {
   const imgDrawn = localStorage.getItem("mh.cf.imgDrawn");
   if (imgDrawn === "Y") {
-    return <PrimaryButton label="Download" onClick={(e) => download()} />;
+    return (
+      <PrimaryButton
+        className={"PrimaryButton TitleText TextCenter"}
+        label="Download"
+        onClick={(e) => download()}
+      />
+    );
   } else {
     return false;
   }
 }
 
-function ButtonPanel(props) {
-  return (
-    <div className="ButtonPanel">
-      <div>{showButtons()}</div>
-    </div>
-  );
-}
-
 function PrimaryButton(props) {
   return (
-    <div className="PrimaryButton TitleText TextCenter" onClick={props.onClick}>
+    <div className={props.className} onClick={props.onClick}>
       {props.label}
     </div>
   );
