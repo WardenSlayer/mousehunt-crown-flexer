@@ -17,9 +17,7 @@ import Select from "react-dropdown-select";
 import React, { useState, useEffect } from "react";
 /////////////////////////////////////////////////////////////////////////////////////////////////
 function App() {
-  useEffect(() => {
-    localStorage.setItem("mh.cf.imgDrawn", "");
-  }, []);
+  useEffect(() => {}, []);
   let defaultState = appDefaultState(miceData);
   const [state, updateState] = useState(defaultState);
   return (
@@ -32,7 +30,8 @@ function App() {
         crown={state[3]}
         update={updateState}
         mouseData={miceData}
-        crownData={["bronze", "silver", "gold", "platinum", "diamond"]}
+        crownData={["bronze", "silver", "gold", "platinum", "diamond", "nth"]}
+        catchNumber={state[4]}
       />
       <MainPanel
         className="Main"
@@ -40,6 +39,7 @@ function App() {
         img={state[1]}
         landscape={state[2]}
         crown={state[3]}
+        catchNumber={state[4]}
       />
       <MainPanel
         className="Mobile"
@@ -47,6 +47,7 @@ function App() {
         img={state[1]}
         landscape={state[2]}
         crown={state[3]}
+        catchNumber={state[4]}
       />
     </div>
   );
@@ -54,12 +55,7 @@ function App() {
 export default App;
 
 function appDefaultState(miceData) {
-  const min = 0;
-  const max = Math.floor(miceData.length);
-  const randMouse = miceData[Math.floor(Math.random() * (max - min + 1) + min)];
-  const crowns = ["bronze", "silver", "gold", "platinum", "diamond"];
-  const randomCrown = crowns[Math.floor(Math.random() * crowns.length)];
-  return [randMouse.name, randMouse.img, randMouse.landscape, randomCrown];
+  return ["none", "none", "none", "none", "none"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,6 +73,7 @@ function Menu(props) {
         img={props.img}
         landscape={props.landscape}
         crown={props.crown}
+        catchNumber={props.catchNumber}
       />
       <Search
         className="Search"
@@ -87,8 +84,22 @@ function Menu(props) {
         img={props.img}
         landscape={props.landscape}
         crown={props.crown}
+        catchNumber={props.catchNumber}
       />
-      <ButtonPanel />
+      <NumberEntry
+        className="NumberEntry"
+        update={props.update}
+        mouse={props.mouse}
+        img={props.img}
+        landscape={props.landscape}
+        crown={props.crown}
+        catchNumber={props.catchNumber}
+      />
+      <ButtonPanel
+        mouse={props.mouse}
+        crown={props.crown}
+        catchNumber={props.catchNumber}
+      />
       <Disclaimer url="http://hitgrab.com/games/" />
     </div>
   );
@@ -116,7 +127,7 @@ function searchOptions(type, data) {
     }
     return 0;
   });
-  //console.log(options);
+  // console.log(options);
   return options;
 }
 
@@ -126,9 +137,10 @@ function Search(props) {
       className={props.className}
       options={props.options}
       placeholder={props.placeholder}
-      searchable={false}
+      disabled={searchDisabled(props.placeholder, props.mouse)}
+      searchable={true}
       backspaceDelete={false}
-      //clearable={true}
+      clearable={true}
       onChange={(values) =>
         SearchOnChange(
           props.placeholder,
@@ -137,28 +149,87 @@ function Search(props) {
           props.mouse,
           props.img,
           props.landscape,
-          props.crown
+          props.crown,
+          props.catchNumber
         )
       }
     />
   );
 }
-function SearchOnChange(type, values, update, mouse, img, landscape, crown) {
-  //console.log(type, values, update, mouse, img, landscape, crown);
-  const newMouse = mapMiceData(values[0].value);
-  if (type === "Select Mouse") {
-    mouse = newMouse.name;
-    img = newMouse.img;
-    landscape = newMouse.landscape;
-  } else if (type === "Select Crown") {
-    crown = values[0].value;
+
+function searchDisabled(type, mouse) {
+  if (type !== "Select Crown") {
+    return false;
+  } else if (mouse === "none") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function SearchOnChange(
+  type,
+  values,
+  update,
+  mouse,
+  img,
+  landscape,
+  crown,
+  cNumber
+) {
+  //console.log(type, values, update, mouse, img, landscape, crown, cNumber);
+  if (values.length > 0) {
+    const newMouse = mapMiceData(values[0].value);
+    if (type === "Select Mouse") {
+      mouse = newMouse.name;
+      img = newMouse.img;
+      landscape = newMouse.landscape;
+    } else if (type === "Select Crown") {
+      crown = values[0].value;
+    }
   }
   //console.log([mouse, img, landscape, crown]);
-  update([mouse, img, landscape, crown]);
-  localStorage.setItem("mh.cf.imgDrawn", "Y");
+  update([mouse, img, landscape, crown, cNumber]);
   setTimeout(() => {
-    domToPng();
+    if (mouse !== "none" && crown !== "none") {
+      domToPng();
+    }
   }, 250);
+}
+
+function NumberEntry(props) {
+  const handleChange = (event) => {
+    props.update([
+      props.mouse,
+      props.img,
+      props.landscape,
+      props.crown,
+      event.target.value,
+    ]);
+    setTimeout(() => {
+      domToPng();
+    }, 250);
+  };
+  return (
+    <div>
+      <input
+        className={props.className}
+        type="number"
+        placeholder="Select Catch #"
+        disabled={isDisabled(props.crown)}
+        value={props.catchNumber}
+        onChange={handleChange}
+      />
+    </div>
+  );
+}
+
+function isDisabled(crown) {
+  if (crown !== "nth") {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function ButtonPanel(props) {
@@ -169,14 +240,17 @@ function ButtonPanel(props) {
         label="Github"
         onClick={(e) => repoGo()}
       />
-      {showButtons()}
+      {showButtons(props.mouse, props.crown, props.catchNumber)}
     </div>
   );
 }
 
-function showButtons() {
-  const imgDrawn = localStorage.getItem("mh.cf.imgDrawn");
-  if (imgDrawn === "Y") {
+function showButtons(mouse, crown, catchNumber) {
+  if (mouse === "none" || crown === "none") {
+    return false;
+  } else if (crown === "nth" && catchNumber === "none") {
+    return false;
+  } else {
     return (
       <PrimaryButton
         className={"PrimaryButton TitleText TextCenter"}
@@ -184,8 +258,6 @@ function showButtons() {
         onClick={(e) => download()}
       />
     );
-  } else {
-    return false;
   }
 }
 
@@ -218,7 +290,14 @@ function disclaimerText() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //MAIN
 function MainPanel(props) {
-  if (props.className === "Main") {
+  if (props.mouse === "none" || props.crown === "none") {
+    return false;
+  } else if (
+    props.crown === "nth" &&
+    (props.catchNumber === "none" || props.className === "Mobile")
+  ) {
+    return false;
+  } else if (props.className === "Main") {
     return (
       <div className={props.className}>
         <ImageCanvas
@@ -226,6 +305,7 @@ function MainPanel(props) {
           img={props.img}
           landscape={props.landscape}
           crown={props.crown}
+          catchNumber={props.catchNumber}
         />
       </div>
     );
@@ -237,6 +317,7 @@ function MainPanel(props) {
           img={props.img}
           landscape={props.landscape}
           crown={props.crown}
+          catchNumber={props.catchNumber}
         />
       </div>
     );
@@ -251,7 +332,11 @@ function ImageCanvas(props) {
         img={props.img}
         landscape={props.landscape}
       />
-      <TextPanel mouse={props.mouse} crown={props.crown} />
+      <TextPanel
+        mouse={props.mouse}
+        crown={props.crown}
+        catchNumber={props.catchNumber}
+      />
     </div>
   );
 }
@@ -295,31 +380,63 @@ function MouseName(props) {
 function TextPanel(props) {
   return (
     <div className="TextPanel">
-      <CrownText crown={props.crown} mouse={props.mouse} />
-      <img src={mapCrown(props.mouse, props.crown)[0]} alt="Flex Text"></img>
+      <CrownText
+        crown={props.crown}
+        mouse={props.mouse}
+        catchNumber={props.catchNumber}
+      />
+      {maybeHideImg(props.mouse, props.crown, props.catchNumber)}
     </div>
   );
+}
+
+function maybeHideImg(mouse, crown, catchNumber) {
+  const source = mapCrown(mouse, crown, catchNumber)[0];
+  if (crown === "nth" && source === "noCrown") {
+    return false;
+  } else {
+    return <img src={source} alt="Flex Text"></img>;
+  }
 }
 
 function CrownText(props) {
   return (
     <div className="CrownText">
-      <p className="TitleText TextLeft">
-        {mapCrown(props.mouse, props.crown)[1]}
-      </p>
-      <p className="PlainText">
-        {"You earned a " + props.crown + " King's Crown."}
-      </p>
+      {maybeHideCrown(props.mouse, props.crown, props.catchNumber)}
       <p className="PlainText">Congratulations!</p>
     </div>
   );
 }
 
-function mapCrown(mouse, crown_tag) {
+function maybeHideCrown(mouse, crown, catchNumber) {
+  if (crown !== "nth") {
+    return (
+      <div>
+        <p className="TitleText TextLeft">
+          {mapCrown(mouse, crown, catchNumber)[1]}
+        </p>
+        <p className="PlainText">
+          {"You earned a " + crown + " King's Crown."}
+        </p>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p className="TitleText TextLeft">
+          {mapCrown(mouse, crown, catchNumber)[1]}
+        </p>
+      </div>
+    );
+  }
+}
+
+function mapCrown(mouse, crown_tag, catch_count) {
   let num = "";
   let img = "";
   let crn = "";
   let toast = "";
+  catch_count = Math.abs(parseInt(catch_count, 10));
   if (crown_tag === "bronze") {
     num = "10th";
     img = bronzeCrown;
@@ -345,9 +462,47 @@ function mapCrown(mouse, crown_tag) {
     img = diamondCrown;
     crn = "Diamond";
     toast = diamondCrownToast;
+  } else if (crown_tag === "nth" && isNaN(catch_count)) {
+    crn = "Nth";
+  } else {
+    const catchFormat = catchCountFormat(catch_count);
+    num = catchFormat[0];
+    img = catchFormat[1];
+    crn = "Nth";
   }
   const crownText = "You caught your " + num + " " + mouse + ".";
   return [img, crownText, crn, toast];
+}
+
+function catchCountFormat(count) {
+  let cNum = "";
+  const j = count % 10,
+    k = count % 100;
+  if (j === 1 && k !== 11) {
+    cNum = count + "st";
+  } else if (j === 2 && k !== 12) {
+    cNum = count + "nd";
+  } else if (j === 3 && k !== 13) {
+    cNum = count + "rd";
+  } else {
+    cNum = count + "th";
+  }
+  //
+  let img = "";
+  if (count >= 2500) {
+    img = diamondCrown;
+  } else if (count >= 1000) {
+    img = platinumCrown;
+  } else if (count >= 500) {
+    img = goldCrown;
+  } else if (count >= 100) {
+    img = silverCrown;
+  } else if (count >= 10) {
+    img = bronzeCrown;
+  } else {
+    img = "noCrown";
+  }
+  return [cNum, img];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

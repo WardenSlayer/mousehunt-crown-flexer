@@ -2,22 +2,28 @@ import html2canvas from "html2canvas";
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //UTILS
 export function domToPng() {
-  html2canvas(document.querySelector(".ImageCanvas")).then((canvas) => {
-    canvas.id = "webImg";
-    const previous = document.getElementById("webImg");
-    if (previous) {
-      previous.remove();
-    }
-    document.querySelector(".Main").appendChild(canvas);
-  });
-  html2canvas(document.querySelector(".gameView")).then((canvas) => {
-    canvas.id = "mobileImg";
-    const previous = document.getElementById("mobileImg");
-    if (previous) {
-      previous.remove();
-    }
-    document.querySelector(".Mobile").appendChild(canvas);
-  });
+  const iCanv = document.querySelector(".ImageCanvas");
+  if (iCanv) {
+    html2canvas(iCanv).then((canvas) => {
+      canvas.id = "webImg";
+      const previous = document.getElementById("webImg");
+      if (previous) {
+        previous.remove();
+      }
+      document.querySelector(".Main").appendChild(canvas);
+    });
+  }
+  const mCanv = document.querySelector(".gameView");
+  if (mCanv) {
+    html2canvas(mCanv).then((canvas) => {
+      canvas.id = "mobileImg";
+      const previous = document.getElementById("mobileImg");
+      if (previous) {
+        previous.remove();
+      }
+      document.querySelector(".Mobile").appendChild(canvas);
+    });
+  }
 }
 
 export function download() {
