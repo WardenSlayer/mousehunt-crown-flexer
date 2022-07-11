@@ -68,6 +68,15 @@
   margin-bottom: 5px;
 }
 
+.NumberEntry {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  color: #15459e;
+  width: 35%;
+  height: 10%;
+}
+
 .ImageCanvas {
   margin-top: -350px;
   margin-bottom: 75px;
@@ -185,7 +194,7 @@
   color: #ffdc15;
   font-weight: 500;
   text-decoration: none solid rgb(68, 68, 68);
-  margin-top: 450px;
+  margin-top: 425px;
   padding-top: 5px;
   width: 385px;
   height: 50px;
